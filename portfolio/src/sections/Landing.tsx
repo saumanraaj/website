@@ -86,7 +86,7 @@ export const Landing: React.FC = () => {
                   className="w-fit px-6 py-2 flex items-center gap-2"
                   asChild
                 >
-                  <a href="/sauman_ copy.pdf" download>
+                  <a href="/sauman_resume.pdf" download>
                     <Download size={20} />
                     <span>Download Resume</span>
                   </a>
