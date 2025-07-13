@@ -1,5 +1,20 @@
 {
-  "buildCommand": "./build.sh",
-  "outputDirectory": "portfolio/build",
-  "installCommand": "echo 'Installation handled by build script'"
+  "version": 2,
+  "builds": [
+    {
+      "src": "portfolio/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build",
+        "buildCommand": "npm run build",
+        "installCommand": "npm install"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 } 
