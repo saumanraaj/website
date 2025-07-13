@@ -2,11 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '../components/ui/card';
 import { SiPython, SiRos, SiTensorflow, SiOpencv, SiDassaultsystemes, SiAutodesk, SiRaspberrypi, SiCplusplus } from "react-icons/si";
+import { IconType } from 'react-icons';
 
 interface Technology {
   id: string;
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: IconType;
   description: string;
   color: string;
 }
@@ -90,30 +91,35 @@ export const Technologies: React.FC = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          {technologies.map((tech, index) => (
-            <motion.div
-              key={tech.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-            >
-              <Card className="h-full hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
-                <CardContent className="p-6 flex flex-col items-center justify-center gap-3 text-center">
-                  <div className="h-12 w-12 flex items-center justify-center mb-2">
-                    <tech.icon className={`h-12 w-12 transition duration-300 ${tech.color}`} />
-                  </div>
-                  <h3 className="font-semibold text-foreground text-sm">
-                    {tech.name}
-                  </h3>
-                  <span className="text-xs text-muted-foreground text-center">
-                    {tech.description}
-                  </span>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+          {technologies.map((tech, index) => {
+            const Icon = tech.icon;
+            return (
+              <motion.div
+                key={tech.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+              >
+                <Card className="h-full hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                  <CardContent className="p-6 flex flex-col items-center justify-center gap-3 text-center">
+                    <div className="h-12 w-12 flex items-center justify-center mb-2">
+                      {Icon ? (
+                        React.createElement(Icon as React.ComponentType<{ className?: string }>, { className: `h-12 w-12 transition duration-300 ${tech.color}` })
+                      ) : null}
+                    </div>
+                    <h3 className="font-semibold text-foreground text-sm">
+                      {tech.name}
+                    </h3>
+                    <span className="text-xs text-muted-foreground text-center">
+                      {tech.description}
+                    </span>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
