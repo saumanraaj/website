@@ -115,7 +115,7 @@ export const Projects: React.FC = () => {
             Featured Projects
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A collection of my work in robotics, computer vision, and software engineering
+            A collection of my work in robotics
           </p>
         </motion.div>
 

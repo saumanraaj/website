@@ -72,7 +72,7 @@ export const Experience: React.FC = () => {
             Professional Experience
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            My journey in robotics and software engineering
+            My journey in robotics so far
           </p>
         </motion.div>
 
